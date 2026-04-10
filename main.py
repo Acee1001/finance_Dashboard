@@ -29,7 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
     "http://localhost:5173",
-    "https://finance-dashboard-tan-eight.vercel.app/",
+    "https://finance-dashboard-rfn9.vercel.app/",
     "https://finance-dashboard-gm4p.onrender.com"
     ],  # Tighten this in production
     allow_credentials=True,
