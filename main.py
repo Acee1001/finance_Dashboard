@@ -30,7 +30,7 @@ app.add_middleware(
     allow_origins=[
     "http://localhost:5173",
     "https://finance-dashboard-tan-eight.vercel.app/",
-    "https://finance-backend-1-kalm.onrender.com"
+    "https://finance-dashboard-gm4p.onrender.com"
     ],  # Tighten this in production
     allow_credentials=True,
     allow_methods=["*"],
