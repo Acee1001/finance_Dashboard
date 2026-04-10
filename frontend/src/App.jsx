@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { ToastProvider } from './context/ToastContext'
+import { ThemeProvider } from './context/ThemeContext'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -13,7 +14,7 @@ import './index.css'
 function PrivateRoute({ children, requireRole }) {
   const { user } = useAuth()
   if (!user) return <Navigate to="/login" replace />
-  if (requireRole === 'admin'   && user.role !== 'admin') return <Navigate to="/app/transactions" replace />
+  if (requireRole === 'admin'   && user.role !== 'admin')  return <Navigate to="/app/transactions" replace />
   if (requireRole === 'analyst' && user.role === 'viewer') return <Navigate to="/app/transactions" replace />
   return children
 }
@@ -39,11 +40,13 @@ function AppRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <ToastProvider>
-          <AppRoutes />
-        </ToastProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ToastProvider>
+            <AppRoutes />
+          </ToastProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   )
 }
